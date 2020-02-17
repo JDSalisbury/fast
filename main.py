@@ -26,16 +26,16 @@ async def read_item(item_id: int):
 
 
 class SearchEngines(str, Enum):
-    google = "www.google.com"
-    bing = "www.bing.com"
-    yahoo = "www.yahoo.com"
+    google = "google"
+    bing = "bing"
+    yahoo = "yahoo"
 
 
 @app.get('/model/{search_engine}')
 async def get_search(search_engine: SearchEngines):
     if search_engine.value == SearchEngines.google:
-        return {"engine": SearchEngines.google}
+        return {"engine": 'www.google.com'}
     if search_engine.value == SearchEngines.bing:
-        return {"engine": SearchEngines.bing}
+        return {"engine": "www.bing.com"}
     if search_engine.value == SearchEngines.yahoo:
-        return {"engine": SearchEngines.yahoo}
+        return {"engine": "www.yahoo.com"}
