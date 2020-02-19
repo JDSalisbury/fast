@@ -1,7 +1,6 @@
 from enum import Enum
 from fastapi import FastAPI, Query
-from pydantic import BaseModel
-from models.Item import Item
+from models import item, user
 app = FastAPI()
 
 
@@ -79,6 +78,11 @@ async def read_user_item(
 
 
 @app.post("/items/")
-async def create_item(item: Item):
+async def create_item(item: item.Item):
 
     return item
+
+
+@app.post("/user/", response_model=user.UserOut)
+async def create_user(*, user: user.UserIn):
+    return user
